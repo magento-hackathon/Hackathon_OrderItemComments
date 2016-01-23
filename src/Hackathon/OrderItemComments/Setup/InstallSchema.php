@@ -21,9 +21,6 @@ class InstallSchema implements InstallSchemaInterface
     {
         $setup->startSetup();
 
-        /**
-         * Create table 'adminnotification_inbox'
-         */
         $table = $setup->getConnection()->newTable(
             $setup->getTable(self::TABLE_NAME)
         )->addColumn(
@@ -45,11 +42,11 @@ class InstallSchema implements InstallSchemaInterface
             ['unsigned' => true, 'nullable' => true],
             'Reference to order item if applicable'
         )->addColumn(
-            'description',
+            'text',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             '64k',
             [],
-            'Description'
+            'Comment text'
         )->addColumn(
             'created_at',
             \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
