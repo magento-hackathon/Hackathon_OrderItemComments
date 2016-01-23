@@ -7,7 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="checkout.cart.item.renderers.default.actions">
+        <referenceBlock name="additional.product.info">
             <block class="Hackathon\OrderItemComments\Block\Ordercomments" name="checkout.cart.item.renderers.default.actions.ordercomments" template="Hackathon_OrderItemComments::orderitemcomments.phtml"/>
         </referenceBlock>
     </body>
