@@ -1,6 +1,6 @@
 <?php
 
-namespace Hackathon\OrderItemComments\Model\Resource;
+namespace Hackathon\OrderItemComments\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
@@ -14,7 +14,7 @@ class Comment extends AbstractDb
      */
     protected function _construct()
     {
-        // TODO: Implement _construct() method.
+        $this->_init('hackathon_orderitemcomments_comment', 'comment_id');
     }
 }
 

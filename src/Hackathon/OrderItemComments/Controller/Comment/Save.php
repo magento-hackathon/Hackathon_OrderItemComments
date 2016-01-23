@@ -13,6 +13,13 @@ class Save extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        die('Works! Time for beer');
+        $data = $this->getRequest()->getParams();
+
+        $comment = $this->_objectManager->create('Hackathon\OrderItemComments\Model\CommentFactory')->create();
+
+        /*$comment->setData($data);
+        print_r($comment->getData());
+        $comment->save();*/
+
     }
 }
