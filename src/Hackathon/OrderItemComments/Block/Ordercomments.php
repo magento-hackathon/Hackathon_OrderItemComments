@@ -1,14 +1,19 @@
 <?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 namespace Hackathon\OrderItemComments\Block;
 
-/**
- * Baz block
- */
-class Ordercomments
-    extends \Magento\Framework\View\Element\Template
+use Magento\Checkout\Block\Cart\Item\Renderer\Actions\Generic;
+
+class Ordercomments extends Generic
 {
-    public function getTitle()
+    /**
+     * @return string
+     */
+    public function getTest()
     {
-        return "Foo Bar Baz";
+        return 'test';
     }
 }
