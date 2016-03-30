@@ -1,4 +1,4 @@
-# Hackathon_OrderItemComments
+# Hackathon_OrderItemComments for Magento 2
 
 ## Installation
 
