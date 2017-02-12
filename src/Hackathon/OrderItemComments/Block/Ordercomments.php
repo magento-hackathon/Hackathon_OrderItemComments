@@ -9,11 +9,5 @@ use Magento\Checkout\Block\Cart\Item\Renderer\Actions\Generic;
 
 class Ordercomments extends Generic
 {
-    /**
-     * @return string
-     */
-    public function getTest()
-    {
-        return 'test';
-    }
+
 }

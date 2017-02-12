@@ -22,7 +22,9 @@ class SaveComments implements ObserverInterface
      */
     protected $_request;
 
-    var $_logger;
+    protected $_logger;
+
+    protected $_commentFactory;
 
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
@@ -60,6 +62,7 @@ class SaveComments implements ObserverInterface
         foreach ($itemcomments as $quoteItemId => $text) {
             $comment = $this->_commentFactory->create();
             $comment
+                ->load($quoteItemId, 'quote_item_id')
                 ->setQuoteItemId($quoteItemId)
                 ->setText($text)
                 ->save();

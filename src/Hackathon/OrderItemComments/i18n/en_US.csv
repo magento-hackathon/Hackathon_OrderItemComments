@@ -1,0 +1,7 @@
+"A comment should belong to either a quote item or order item.","A comment should belong to either a quote item or order item."
+"A comment cannot belong to both a quote item and order item.","A comment cannot belong to both a quote item and order item."
+"A comment requires some text.","A comment requires some text."
+"Place your order comment here","Place your order comment here"
+"Order Item Comments","Order Item Comments"
+"General Options","General Options"
+Enabled,Enabled

@@ -25,9 +25,9 @@ class Comment extends AbstractDb
      */
     protected function _beforeSave(\Magento\Framework\Model\AbstractModel $object)
     {
-        $belongsToQuoteItem = $object->hasData(CommentInterface::QUOTE_ITEM_ID_COLUMN);
-        $belongsToOrderItem = $object->hasData(CommentInterface::ORDER_ITEM_ID_COLUMN);
-        $hasText = $object->hasData(CommentInterface::TEXT_COLUMN);
+        $belongsToQuoteItem = $object->getData(CommentInterface::QUOTE_ITEM_ID_COLUMN);
+        $belongsToOrderItem = $object->getData(CommentInterface::ORDER_ITEM_ID_COLUMN);
+        $hasText = $object->getData(CommentInterface::TEXT_COLUMN);
 
         // A comment should either be attached to a quote item or order item...
         if (! $belongsToQuoteItem && ! $belongsToOrderItem) {

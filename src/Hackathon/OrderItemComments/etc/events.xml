@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_quote_item_load_after">
+        <observer name="hackathon_orderitemcomments_sales_quote_item_load_after" instance="Hackathon\OrderItemComments\Observers\LoadComment" />
+    </event>
+    <event name="sales_quote_load_after">
+        <observer name="hackathon_orderitemcomments_sales_quote_load_after" instance="Hackathon\OrderItemComments\Observers\LoadComments" />
+    </event>
+</config>
