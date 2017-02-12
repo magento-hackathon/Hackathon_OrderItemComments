@@ -4,8 +4,7 @@
   "type": "magento2-module",
   "minimum-stability": "stable",
   "require": {
-    "php": "~5.6.0|~7.0.0",
-    "magento/framework": "100.0.*"
+    "magento/framework": "100.*"
   },
   "autoload": {
     "files": [
