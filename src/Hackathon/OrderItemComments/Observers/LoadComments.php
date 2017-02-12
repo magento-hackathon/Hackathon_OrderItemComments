@@ -15,15 +15,11 @@ use Magento\Framework\Event\ObserverInterface;
  */
 class LoadComments implements ObserverInterface
 {
-    protected $_logger;
-
     protected $_itemCollection;
 
     public function __construct(
-        \Psr\Log\LoggerInterface $logger,
         \Hackathon\OrderItemComments\Model\ResourceModel\Comment\Collection $itemCollection
     ) {
-        $this->_logger = $logger;
         $this->_itemCollection = $itemCollection;
     }
 

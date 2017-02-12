@@ -15,6 +15,14 @@ use Magento\Framework\Event\ObserverInterface;
  */
 class LoadComment implements ObserverInterface
 {
+    protected $_itemCollection;
+
+    public function __construct(
+        \Hackathon\OrderItemComments\Model\ResourceModel\Comment\Collection $itemCollection
+    ) {
+        $this->_itemCollection = $itemCollection;
+    }
+    
     /**
      * Check post request whether it contains item comments
      *
@@ -25,7 +33,12 @@ class LoadComment implements ObserverInterface
     {
         $item = $observer->getEvent()->getItem();
 
-        $item->setComment('This comes from the LoadComment plugin');
+        $comment = $this->_itemCollection
+            ->addFieldToFilter('quote_item_id', $item->getId())
+            ->setPageSize(1)
+            ->getFirstItem();
+
+        $item->setData('comment', $comment->getText());
 
         return $this;
     }
