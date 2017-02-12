@@ -30,7 +30,7 @@ class Comment extends AbstractDb
         $hasText = $object->hasData(CommentInterface::TEXT_COLUMN);
 
         // A comment should either be attached to a quote item or order item...
-        if (! $belongsToQuoteItem || ! $belongsToOrderItem) {
+        if (! $belongsToQuoteItem && ! $belongsToOrderItem) {
             throw new \Magento\Framework\Exception\LocalizedException(
                 __('A comment should belong to either a quote item or order item.')
             );
@@ -45,7 +45,7 @@ class Comment extends AbstractDb
 
         if (! $hasText) {
             throw new \Magento\Framework\Exception\LocalizedException(
-                __('A comment requirescomp text.')
+                __('A comment requires some text.')
             );
         }
 

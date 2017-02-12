@@ -12,10 +12,11 @@ class Save extends \Magento\Framework\App\Action\Action
     protected $commentFactory;
 
     public function __construct(
-        Context $context
+        Context $context,
+        \Hackathon\OrderItemComments\Model\CommentFactory $commentFactory
     ) {
         parent::__construct($context);
-        $this->commentFactory = $this->_objectManager->create('\Hackathon\OrderItemComments\Model\CommentFactory');
+        $this->commentFactory = $commentFactory;
     }
 
     /**
@@ -28,11 +29,11 @@ class Save extends \Magento\Framework\App\Action\Action
     {
         $data = $this->getRequest()->getParams();
 
-        $comment = $this->commentFactory->create();
-
-        /*$comment->setData($data);
-        print_r($comment->getData());
-        $comment->save();*/
+        $comment = $this->_commentFactory->create();
+        $comment
+            ->setQuoteItemId($data['quote_item_id'])
+            ->setText($data['text'])
+            ->save();
 
     }
 }

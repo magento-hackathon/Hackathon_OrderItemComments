@@ -15,27 +15,54 @@ use Magento\Framework\Event\ObserverInterface;
  */
 class SaveComments implements ObserverInterface
 {
+    /**
+     * Request instance
+     *
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+
     var $_logger;
 
     public function __construct(
-        \Psr\Log\LoggerInterface $logger
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\App\RequestInterface $request,
+        \Hackathon\OrderItemComments\Model\CommentFactory $commentFactory
     ) {
+        $this->_request = $request;
         $this->_logger = $logger;
+        $this->_commentFactory = $commentFactory;
     }
 
     /**
-     * Check move quote item to wishlist request
+     * Check post request whether it contains item comments
      *
      * @param   Observer $observer
      * @return  $this
      */
     public function execute(Observer $observer)
     {
-        $cart = $observer->getEvent()->getCart();
-        $data = $observer->getEvent()->getInfo()->toArray();
+        $itemcomments = $this->_request->getParam('itemcomments');
 
-        $this->_logger->log(null, $data);
+        $this->processItemComments($itemcomments);
 
         return $this;
+    }
+
+    /**
+     * Process item comments - save/update them
+     *
+     * @param   Observer $observer
+     * @return  $this
+     */
+    protected function processItemComments($itemcomments)
+    {
+        foreach ($itemcomments as $quoteItemId => $text) {
+            $comment = $this->_commentFactory->create();
+            $comment
+                ->setQuoteItemId($quoteItemId)
+                ->setText($text)
+                ->save();
+        }
     }
 }
